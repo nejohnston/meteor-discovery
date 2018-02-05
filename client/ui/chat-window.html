@@ -1,7 +1,7 @@
 <template name="chatwindow">
     <div id="window">
         <ul id='messages'>
-            {{#each messages}}
+            {{#each message in messages}}
             <li>{{message.author}}: {{message.content}}</li>
             {{/each}}
         </ul>
