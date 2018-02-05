@@ -18,8 +18,12 @@ Template.chatinput.events({
   "submit #chat-input form"(e) {
     e.preventDefault();
     const content = e.target[0].value;
-    messages.set([...messages.get(), { author: "me", content }]);
-    console.log(messages);
+    content &&
+      messages.set([
+        ...messages.get(),
+        { author: "me", content }
+      ]);
+    e.target[0].value = "";
   }
 });
 
