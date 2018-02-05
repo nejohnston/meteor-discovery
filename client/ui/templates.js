@@ -1,4 +1,5 @@
 import { Template } from "meteor/templating";
+import { ReactiveVar } from "meteor/reactive-var";
 
 Template.chatwindow.helpers({
   messages() {
@@ -9,4 +10,4 @@ Template.chatwindow.helpers({
   }
 });
 
-Template.chatinput;
+Template.chatinput.helpers();
