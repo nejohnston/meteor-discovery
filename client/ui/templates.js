@@ -6,12 +6,14 @@ const messages = new ReactiveVar([
   { author: "me", content: "aaaaaaa" }
 ]);
 
+// this gets all the messages
 Template.chatwindow.helpers({
   messages() {
     return messages.get();
   }
 });
 
+// this sets the values, gets messages const then sets new author and content
 Template.chatinput.events({
   "submit #chat-input form"(e) {
     e.preventDefault();
