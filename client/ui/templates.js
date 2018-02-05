@@ -1,15 +1,10 @@
 import { Template } from "meteor/templating";
 import { ReactiveVar } from "meteor/reactive-var";
 
-const messages = new ReactiveVar([
-  { author: "me", content: "aaaaaaa" },
-  { author: "me", content: "aaaaaaa" }
-]);
-
-// this gets all the messages
+// this queries the database for all Messages
 Template.chatwindow.helpers({
   messages() {
-    return messages.get();
+    return Messages.find();
   }
 });
 
@@ -18,11 +13,7 @@ Template.chatinput.events({
   "submit #chat-input form"(e) {
     e.preventDefault();
     const content = e.target[0].value;
-    content &&
-      messages.set([
-        ...messages.get(),
-        { author: "me", content }
-      ]);
+    content && Messages.insert({ author: "me", content });
     e.target[0].value = "";
   }
 });
