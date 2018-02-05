@@ -1,14 +1,14 @@
 import { Template } from "meteor/templating";
 import { ReactiveVar } from "meteor/reactive-var";
 
-const messages = [
+const messages = new ReactiveVar([
   { author: "me", content: "aaaaaaa" },
   { author: "me", content: "aaaaaaa" }
-];
+]);
 
 Template.chatwindow.helpers({
   messages() {
-    return messages;
+    return messages.get();
   }
 });
 
@@ -16,7 +16,7 @@ Template.chatinput.events({
   "submit #chat-input form"(e) {
     e.preventDefault();
     const content = e.target[0].value;
-    messages.push({ author: "me", content });
+    messages.set([...messages.get(), { author: "me", content }]);
     console.log(messages);
   }
 });
